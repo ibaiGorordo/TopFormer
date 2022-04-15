@@ -502,7 +502,7 @@ class Segmentor(nn.Module):
     def forward(self, img):
         x = self.backbone(img)
         out = self.decode_head(x)
-        return out
+        return torch.argmax(out, dim=1)
 
 
 def _prepare_input_img(img_path,
